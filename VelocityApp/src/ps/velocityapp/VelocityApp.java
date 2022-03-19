@@ -119,7 +119,7 @@ public class VelocityApp implements IApp {
 			var t = getTime();
 
 			var s = velocityService.calculateDisplacement(u, a, t);
-			System.out.printf("Final velocity : %.2f ms-1\n", s);
+			System.out.printf("Final velocity : %.2f m\n", s);
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
@@ -134,7 +134,7 @@ public class VelocityApp implements IApp {
 			var t = getTime();
 
 			var s = velocityService.calculateDisplacementWihtoutAcceleration(u, v, t);
-			System.out.printf("Final velocity : %.2f ms-1\n", s);
+			System.out.printf("Final velocity : %.2f m\n", s);
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
