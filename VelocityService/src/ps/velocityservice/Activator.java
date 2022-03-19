@@ -2,17 +2,21 @@ package ps.velocityservice;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 
 public class Activator implements BundleActivator {
+	
+	private ServiceRegistration<IVelocityService> service;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		System.out.println("Hello World!!");
+		IVelocityService velocityService = new VelocityService();
+		service = context.registerService(IVelocityService.class, velocityService, null);
 	}
 	
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		System.out.println("Goodbye World!!");
+		service.unregister();
 	}
 
 }
