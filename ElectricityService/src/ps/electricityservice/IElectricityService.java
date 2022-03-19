@@ -4,42 +4,42 @@ public interface IElectricityService {
 	
 	/**
 	 * Calculate power
-	 * @param v Voltage
-	 * @param c Current
-	 * @return Power
+	 * @param v Voltage (V)
+	 * @param c Current (A)
+	 * @return Power (W)
 	 */
 	double calculatePower(double v, double c);
 	
 	/**
 	 * Calculate voltage
-	 * @param c Current
-	 * @param r Resistance
-	 * @return Voltage
+	 * @param c Current (A)
+	 * @param r Resistance (ohm)
+	 * @return Voltage (V)
 	 */
 	double calculateVoltage(double c, double r);
 	
 	/**
 	 * Calculate charge
-	 * @param c Current
-	 * @param t Time
-	 * @return Charge
+	 * @param c Current (A)
+	 * @param t Time (s)
+	 * @return Charge (C)
 	 */
 	double calculateCharge(double c, double t);
 	
 	/**
 	 * Calculate energy
-	 * @param v Voltage
-	 * @param c Charge
-	 * @return Energy
+	 * @param v Voltage (V)
+	 * @param c Charge (C)
+	 * @return Energy (J)
 	 */
 	double calculateEnergy(double v, double c);
 	
 	/**
 	 * Calculate energy
-	 * @param v Voltage
-	 * @param c Current
-	 * @param t Time
-	 * @return Energy
+	 * @param v Voltage (V)
+	 * @param c Current (A)
+	 * @param t Time (s)
+	 * @return Energy (J)
 	 */
 	double calculateEnergy(double v, double c, double t);
 
