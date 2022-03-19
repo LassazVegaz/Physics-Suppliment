@@ -4,7 +4,6 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import ps.core.IApp;
 import ps.velocityservice.IVelocityService;
 
 public class Activator implements BundleActivator {
