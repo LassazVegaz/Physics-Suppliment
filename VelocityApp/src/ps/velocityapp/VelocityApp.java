@@ -2,7 +2,6 @@ package ps.velocityapp;
 
 import java.util.Scanner;
 
-import ps.core.IApp;
 import ps.velocityservice.IVelocityService;
 
 public class VelocityApp implements IApp {
@@ -29,8 +28,9 @@ public class VelocityApp implements IApp {
 
 		while (true) {
 
+			System.out.println();
+			System.out.println();
 			displayMenu();
-
 			System.out.print("Please select an option: ");
 
 			int input;
@@ -43,6 +43,8 @@ public class VelocityApp implements IApp {
 
 			if (input == OPTION_EXIT)
 				break;
+
+			System.out.println();
 
 			switch (input) {
 			case OPTION_VELO:
@@ -80,19 +82,88 @@ public class VelocityApp implements IApp {
 	}
 
 	private void calVelo() {
+		try {
 
+			var u = getInitialVelocity();
+			var a = getAcceleration();
+			var t = getTime();
+
+			var v = velocityService.calculateFinalVelocity(u, a, t);
+			System.out.printf("Final velocity : %.2f ms-1\n", v);
+
+		} catch (Exception e) {
+			System.out.println("Invalid input");
+		}
 	}
 
 	private void calVeloNoTime() {
+		try {
 
+			var u = getInitialVelocity();
+			var a = getAcceleration();
+			var s = getDisplacement();
+
+			var v = velocityService.calculateFinalVelocityWihtoutTime(u, a, s);
+			System.out.printf("Final velocity : %.2f ms-1\n", v);
+
+		} catch (Exception e) {
+			System.out.println("Invalid input");
+		}
 	}
 
 	private void calDis() {
+		try {
 
+			var u = getInitialVelocity();
+			var a = getAcceleration();
+			var t = getTime();
+
+			var s = velocityService.calculateDisplacement(u, a, t);
+			System.out.printf("Final velocity : %.2f ms-1\n", s);
+
+		} catch (Exception e) {
+			System.out.println("Invalid input");
+		}
 	}
 
 	private void calDisNoAcc() {
+		try {
 
+			var u = getInitialVelocity();
+			var v = getFinalVelocity();
+			var t = getTime();
+
+			var s = velocityService.calculateDisplacementWihtoutAcceleration(u, v, t);
+			System.out.printf("Final velocity : %.2f ms-1\n", s);
+
+		} catch (Exception e) {
+			System.out.println("Invalid input");
+		}
+	}
+	
+	private double getInitialVelocity() {
+		System.out.println("Enter initial velocity (ms-1) : ");
+		return scanner.nextDouble();
+	}
+	
+	private double getAcceleration() {
+		System.out.println("Enter acceleration (ms-2) : ");
+		return scanner.nextDouble();
+	}
+	
+	private double getTime() {
+		System.out.println("Enter time (s) : ");
+		return scanner.nextDouble();
+	}
+	
+	private double getFinalVelocity() {
+		System.out.println("Enter final velocity (ms-1) : ");
+		return scanner.nextDouble();
+	}
+	
+	private double getDisplacement() {
+		System.out.println("Enter displacement (m) : ");
+		return scanner.nextDouble();
 	}
 
 }

@@ -12,7 +12,7 @@ public class Activator implements BundleActivator {
 	private ServiceRegistration<IApp> registration;
 
 	@Override
-	public void start(BundleContext context) throws Exception {
+	public void start(BundleContext context) throws Exception {		
 		var serviceReference = context.getServiceReference(IVelocityService.class);
 		var service = context.getService(serviceReference);
 		
@@ -21,7 +21,7 @@ public class Activator implements BundleActivator {
 	}
 
 	@Override
-	public void stop(BundleContext context) throws Exception {
+	public void stop(BundleContext context) throws Exception {		
 		registration.unregister();
 	}
 
