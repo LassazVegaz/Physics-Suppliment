@@ -8,11 +8,16 @@ public class EnergyApp implements IEnergyApp {
 
 	private static final int OPTION_KE = 1, OPTION_PE = 2, OPTION_POWER = 3, OPTION_WORK = 4, OPTION_EXIT = 0;
 
-	private Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 	private IEnergyService energyService;
 
 	public EnergyApp(IEnergyService energyService) {
 		this.energyService = energyService;
+	}
+	
+	@Override
+	public void setOutputStream(Scanner scanner) {
+		this.scanner = scanner;
 	}
 
 	@Override
@@ -60,8 +65,6 @@ public class EnergyApp implements IEnergyApp {
 			}
 
 		}
-
-		scanner.close();
 
 	}
 

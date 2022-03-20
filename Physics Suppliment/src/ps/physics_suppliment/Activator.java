@@ -28,7 +28,7 @@ public class Activator implements BundleActivator {
 
 		var energyAppRef = context.getServiceReference(IEnergyApp.class);
 		energyApp = context.getService(energyAppRef);
-		
+
 		var electricityAppRef = context.getServiceReference(IElectricityApp.class);
 		electricityApp = context.getService(electricityAppRef);
 
@@ -44,48 +44,49 @@ public class Activator implements BundleActivator {
 		System.out.println("Welcome to Physics Supplement!");
 		System.out.println("Solve all your physics problems with US");
 
-		try (var scanner = new Scanner(System.in)) {
-			while (true) {
+		var scanner = new Scanner(System.in);
+		setScanner(scanner);
 
-				System.out.println();
-				System.out.println();
-				displayMenu();
-				System.out.print("Please select an option : ");
+		while (true) {
 
-				int input;
-				try {
-					input = scanner.nextInt();
-				} catch (Exception e) {
-					System.out.println("Invalid input");
-					continue;
-				}
+			System.out.println();
+			System.out.println();
+			displayMenu();
+			System.out.print("Please select an option : ");
 
-				if (input == OPTION_EXIT)
-					break;
-
-				switch (input) {
-				case OPTION_VELO:
-					velocityApp.start();
-					break;
-
-				case OPTION_FORCE:
-					forceApp.start();
-					break;
-					
-				case OPTION_ENERGY:
-					energyApp.start();
-					break;
-					
-				case OPTION_ELEC:
-					electricityApp.start();
-					break;
-
-				default:
-					System.out.println("Invalid input");
-					break;
-				}
-
+			int input;
+			try {
+				input = scanner.nextInt();
+			} catch (Exception e) {
+				System.out.println("Invalid input");
+				continue;
 			}
+
+			if (input == OPTION_EXIT)
+				break;
+
+			switch (input) {
+			case OPTION_VELO:
+				velocityApp.start();
+				break;
+
+			case OPTION_FORCE:
+				forceApp.start();
+				break;
+
+			case OPTION_ENERGY:
+				energyApp.start();
+				break;
+
+			case OPTION_ELEC:
+				electricityApp.start();
+				break;
+
+			default:
+				System.out.println("Invalid input");
+				break;
+			}
+
 		}
 	}
 
@@ -97,6 +98,13 @@ public class Activator implements BundleActivator {
 		System.out.println(OPTION_ENERGY + " -> Energy equations");
 		System.out.println(OPTION_ELEC + " -> Electricity equations");
 
+	}
+
+	private void setScanner(Scanner scanner) {
+		velocityApp.setOutputStream(scanner);
+		energyApp.setOutputStream(scanner);
+		electricityApp.setOutputStream(scanner);
+		forceApp.setOutputStream(scanner);
 	}
 
 }

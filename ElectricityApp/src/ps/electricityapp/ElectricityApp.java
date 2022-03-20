@@ -9,11 +9,16 @@ public class ElectricityApp implements IElectricityApp {
 	private static final int OPTION_POWER = 1, OPTION_VOLTAGE = 2, OPTION_CHARGE = 3, OPTION_ENERGY = 4,
 			OPTION_ENERGY_NO_CHARGE = 5, OPTION_EXIT = 0;
 
-	private Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 	private IElectricityService electricityService;
 
 	public ElectricityApp(IElectricityService electricityService) {
 		this.electricityService = electricityService;
+	}
+	
+	@Override
+	public void setOutputStream(Scanner scanner) {
+		this.scanner = scanner;
 	}
 
 	@Override
@@ -65,8 +70,6 @@ public class ElectricityApp implements IElectricityApp {
 			}
 
 		}
-
-		scanner.close();
 
 	}
 

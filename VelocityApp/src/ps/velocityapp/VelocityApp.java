@@ -6,12 +6,10 @@ import ps.velocityservice.IVelocityService;
 
 public class VelocityApp implements IApp {
 
-	private static final String NAME = "Velocity";
-
 	private static final int OPTION_VELO = 1, OPTION_VELO_NO_TIME = 2, OPTION_DIS = 3, OPTION_DIS_NO_ACC = 4,
 			OPTION_EXIT = 0;
 
-	private Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 	private IVelocityService velocityService;
 
 	public VelocityApp(IVelocityService velocityService) {
@@ -19,8 +17,8 @@ public class VelocityApp implements IApp {
 	}
 
 	@Override
-	public String getName() {
-		return NAME;
+	public void setOutputStream(Scanner scanner) {
+		this.scanner = scanner;
 	}
 
 	@Override
@@ -143,28 +141,28 @@ public class VelocityApp implements IApp {
 			scanner.nextLine();
 		}
 	}
-	
+
 	private double getInitialVelocity() {
 		System.out.print("Enter initial velocity (ms-1) : ");
 		return scanner.nextDouble();
 	}
-	
+
 	private double getAcceleration() {
 		return getDouble("Enter acceleration (ms-2) : ");
 	}
-	
+
 	private double getTime() {
 		return getDouble("Enter time (s) : ");
 	}
-	
+
 	private double getFinalVelocity() {
 		return getDouble("Enter final velocity (ms-1) : ");
 	}
-	
+
 	private double getDisplacement() {
 		return getDouble("Enter displacement (m) : ");
 	}
-	
+
 	private double getDouble(String message) {
 		System.out.print(message);
 		return scanner.nextDouble();

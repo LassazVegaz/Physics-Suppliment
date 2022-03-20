@@ -1,15 +1,12 @@
 package ps.velocityapp;
 
+import java.util.Scanner;
+
+import javax.sound.midi.VoiceStatus;
+
 public interface IApp {
 	
-	/**
-	 * Get name of the app
-	 */
-	String getName();
-	
-	/**
-	 * Start the app
-	 */
+	void setOutputStream(Scanner scanner);
 	void start();
 
 }

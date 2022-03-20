@@ -9,11 +9,16 @@ public class ForceApp implements IForceApp {
 	private static final int OPTION_FORCE = 1, OPTION_UPTHRUST_MASS = 2, OPTION_UPTHRUST_VOL = 3, OPTION_FRICTION = 4,
 			OPTION_EXIT = 0;
 
-	private Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 	private IForceService forceService;
 
 	public ForceApp(IForceService forceService) {
 		this.forceService = forceService;
+	}
+	
+	@Override
+	public void setOutputStream(Scanner scanner) {
+		this.scanner = scanner;
 	}
 
 	@Override
@@ -61,8 +66,6 @@ public class ForceApp implements IForceApp {
 			}
 
 		}
-
-		scanner.close();
 
 	}
 
