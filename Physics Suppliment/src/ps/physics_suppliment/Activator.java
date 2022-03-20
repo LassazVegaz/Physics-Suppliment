@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-
+import ps.forceapp.IForceApp;
 import ps.velocityapp.IApp;
 
 public class Activator implements BundleActivator {
@@ -12,11 +12,15 @@ public class Activator implements BundleActivator {
 	private static final int OPTION_EXIT = 0, OPTION_VELO = 1, OPTION_FORCE = 2, OPTION_ENERGY = 3, OPTION_ELEC = 4;
 
 	private IApp velocityApp;
+	private IForceApp forceApp;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		var serviceRefference = context.getServiceReference(IApp.class);
-		velocityApp = context.getService(serviceRefference);
+		var veloServiceRef = context.getServiceReference(IApp.class);
+		velocityApp = context.getService(veloServiceRef);
+		
+		var forceServiceRef = context.getServiceReference(IForceApp.class);
+		forceApp = context.getService(forceServiceRef);
 		
 		start();
 	}
@@ -53,6 +57,10 @@ public class Activator implements BundleActivator {
 			switch (input) {
 			case OPTION_VELO:
 				velocityApp.start();
+				break;
+				
+			case OPTION_FORCE:
+				forceApp.start();
 				break;
 
 			default:
