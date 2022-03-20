@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import ps.electricityapp.IElectricityApp;
-import ps.eneryapp.IEnergyApp;
+import ps.energyapp.*;
 import ps.forceapp.IForceApp;
 import ps.velocityapp.IApp;
 
@@ -44,51 +44,49 @@ public class Activator implements BundleActivator {
 		System.out.println("Welcome to Physics Supplement!");
 		System.out.println("Solve all your physics problems with US");
 
-		var scanner = new Scanner(System.in);
+		try (var scanner = new Scanner(System.in)) {
+			while (true) {
 
-		while (true) {
+				System.out.println();
+				System.out.println();
+				displayMenu();
+				System.out.print("Please select an option : ");
 
-			System.out.println();
-			System.out.println();
-			displayMenu();
-			System.out.print("Please select an option : ");
+				int input;
+				try {
+					input = scanner.nextInt();
+				} catch (Exception e) {
+					System.out.println("Invalid input");
+					continue;
+				}
 
-			int input;
-			try {
-				input = scanner.nextInt();
-			} catch (Exception e) {
-				System.out.println("Invalid input");
-				continue;
+				if (input == OPTION_EXIT)
+					break;
+
+				switch (input) {
+				case OPTION_VELO:
+					velocityApp.start();
+					break;
+
+				case OPTION_FORCE:
+					forceApp.start();
+					break;
+					
+				case OPTION_ENERGY:
+					energyApp.start();
+					break;
+					
+				case OPTION_ELEC:
+					electricityApp.start();
+					break;
+
+				default:
+					System.out.println("Invalid input");
+					break;
+				}
+
 			}
-
-			if (input == OPTION_EXIT)
-				break;
-
-			switch (input) {
-			case OPTION_VELO:
-				velocityApp.start();
-				break;
-
-			case OPTION_FORCE:
-				forceApp.start();
-				break;
-				
-			case OPTION_ENERGY:
-				energyApp.start();
-				break;
-				
-			case OPTION_ELEC:
-				electricityApp.start();
-				break;
-
-			default:
-				System.out.println("Invalid input");
-				break;
-			}
-
 		}
-
-		scanner.close();
 	}
 
 	private void displayMenu() {

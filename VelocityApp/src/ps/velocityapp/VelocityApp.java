@@ -38,6 +38,7 @@ public class VelocityApp implements IApp {
 				input = scanner.nextInt();
 			} catch (Exception e) {
 				System.out.println("Invaliid input");
+				scanner.nextLine();
 				continue;
 			}
 
@@ -69,8 +70,6 @@ public class VelocityApp implements IApp {
 
 		}
 
-		scanner.close();
-
 	}
 
 	private void displayMenu() {
@@ -93,6 +92,7 @@ public class VelocityApp implements IApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -108,6 +108,7 @@ public class VelocityApp implements IApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -123,6 +124,7 @@ public class VelocityApp implements IApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -138,31 +140,33 @@ public class VelocityApp implements IApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 	
 	private double getInitialVelocity() {
-		System.out.println("Enter initial velocity (ms-1) : ");
+		System.out.print("Enter initial velocity (ms-1) : ");
 		return scanner.nextDouble();
 	}
 	
 	private double getAcceleration() {
-		System.out.println("Enter acceleration (ms-2) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter acceleration (ms-2) : ");
 	}
 	
 	private double getTime() {
-		System.out.println("Enter time (s) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter time (s) : ");
 	}
 	
 	private double getFinalVelocity() {
-		System.out.println("Enter final velocity (ms-1) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter final velocity (ms-1) : ");
 	}
 	
 	private double getDisplacement() {
-		System.out.println("Enter displacement (m) : ");
+		return getDouble("Enter displacement (m) : ");
+	}
+	
+	private double getDouble(String message) {
+		System.out.print(message);
 		return scanner.nextDouble();
 	}
 

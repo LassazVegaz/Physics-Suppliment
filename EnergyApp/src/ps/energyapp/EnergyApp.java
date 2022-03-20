@@ -1,4 +1,4 @@
-package ps.eneryapp;
+package ps.energyapp;
 
 import java.util.Scanner;
 

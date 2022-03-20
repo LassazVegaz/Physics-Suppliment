@@ -1,4 +1,4 @@
-package ps.eneryapp;
+package ps.energyapp;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
