@@ -91,10 +91,10 @@ public class ForceApp implements IForceApp {
 	private void calUpthrustWithMass() {
 		try {
 
-			var m = getMass();
-			var a = getAcceleration();
+			var m = getWaterMass();
+			var g = getGravAcc();
 
-			var f = forceService.calculateUpthrust(m, a);
+			var f = forceService.calculateUpthrust(m, g);
 			System.out.printf("Upthrust : %.2f N\n", f);
 
 		} catch (Exception e) {
@@ -105,11 +105,11 @@ public class ForceApp implements IForceApp {
 	private void calUpthrustWithVol() {
 		try {
 
-			var v = getVolume();
-			var d = getDensity();
-			var a = getAcceleration();
+			var v = getWaterVolume();
+			var d = getWaterDensity();
+			var g = getGravAcc();
 
-			var f = forceService.calculateUpthrust(v, d, a);
+			var f = forceService.calculateUpthrust(v, d, g);
 			System.out.printf("Upthrust : %.2f N\n", f);
 
 		} catch (Exception e) {
@@ -136,8 +136,18 @@ public class ForceApp implements IForceApp {
 		return scanner.nextDouble();
 	}
 
+	private double getWaterMass() {
+		System.out.println("Enter mass of water displaced (kg) : ");
+		return scanner.nextDouble();
+	}
+
 	private double getAcceleration() {
 		System.out.println("Enter acceleration (ms-2) : ");
+		return scanner.nextDouble();
+	}
+	
+	private double getGravAcc() {
+		System.out.println("Enter acceleration due to gravity (ms-2) : ");
 		return scanner.nextDouble();
 	}
 
@@ -146,13 +156,13 @@ public class ForceApp implements IForceApp {
 		return scanner.nextDouble();
 	}
 
-	private double getVolume() {
-		System.out.println("Enter volume (m3) : ");
+	private double getWaterVolume() {
+		System.out.println("Enter volume of water displaced (m3) : ");
 		return scanner.nextDouble();
 	}
 
-	private double getDensity() {
-		System.out.println("Enter density (kg m-3) : ");
+	private double getWaterDensity() {
+		System.out.println("Enter density of water displaced (kg m-3) : ");
 		return scanner.nextDouble();
 	}
 
