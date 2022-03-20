@@ -35,6 +35,7 @@ public class EnergyApp implements IEnergyApp {
 				input = scanner.nextInt();
 			} catch (Exception e) {
 				System.out.println("Invaliid input");
+				scanner.nextLine();
 				continue;
 			}
 
@@ -87,6 +88,7 @@ public class EnergyApp implements IEnergyApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -102,6 +104,7 @@ public class EnergyApp implements IEnergyApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -116,6 +119,7 @@ public class EnergyApp implements IEnergyApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -130,36 +134,36 @@ public class EnergyApp implements IEnergyApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
 	private double getMass() {
-		System.out.println("Enter mass (kg) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter mass (kg) : ");
 	}
 
 	private double getForce() {
-		System.out.println("Enter force (N) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter force (N) : ");
 	}
 
 	private double getVelocity() {
-		System.out.println("Enter velocity (ms-1) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter velocity (ms-1) : ");
 	}
 
 	private double getGravAcc() {
-		System.out.println("Enter acceleration due to gravity (ms-2) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter acceleration due to gravity (ms-2) : ");
 	}
 
 	private double getDisplacement() {
-		System.out.println("Enter displacement (m) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter displacement (m) : ");
 	}
 
 	private double getHeight() {
-		System.out.println("Enter height (m) : ");
+		return getDouble("Enter height (m) : ");
+	}
+
+	private double getDouble(String msg) {
+		System.out.print(msg);
 		return scanner.nextDouble();
 	}
 

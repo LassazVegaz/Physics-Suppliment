@@ -36,6 +36,7 @@ public class ElectricityApp implements IElectricityApp {
 				input = scanner.nextInt();
 			} catch (Exception e) {
 				System.out.println("Invaliid input");
+				scanner.nextLine();
 				continue;
 			}
 
@@ -93,6 +94,7 @@ public class ElectricityApp implements IElectricityApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -107,6 +109,7 @@ public class ElectricityApp implements IElectricityApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -121,6 +124,7 @@ public class ElectricityApp implements IElectricityApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -135,6 +139,7 @@ public class ElectricityApp implements IElectricityApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -150,31 +155,32 @@ public class ElectricityApp implements IElectricityApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
 	private double getVoltage() {
-		System.out.println("Enter voltage (V) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter voltage (V) : ");
 	}
 
 	private double getCurrent() {
-		System.out.println("Enter current (A) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter current (A) : ");
 	}
 
 	private double getResistance() {
-		System.out.println("Enter resistance (ohm) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter resistance (ohm) : ");
 	}
 
 	private double getTime() {
-		System.out.println("Enter time (s) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter time (s) : ");
 	}
 
 	private double getCharge() {
-		System.out.println("Enter charge (C) : ");
+		return getDouble("Enter charge (C) : ");
+	}
+
+	private double getDouble(String msg) {
+		System.out.print(msg);
 		return scanner.nextDouble();
 	}
 

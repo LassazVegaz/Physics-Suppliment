@@ -59,6 +59,7 @@ public class Activator implements BundleActivator {
 				input = scanner.nextInt();
 			} catch (Exception e) {
 				System.out.println("Invalid input");
+				scanner.nextLine();
 				continue;
 			}
 

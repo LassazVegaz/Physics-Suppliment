@@ -36,6 +36,7 @@ public class ForceApp implements IForceApp {
 				input = scanner.nextInt();
 			} catch (Exception e) {
 				System.out.println("Invaliid input");
+				scanner.nextLine();
 				continue;
 			}
 
@@ -88,6 +89,7 @@ public class ForceApp implements IForceApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -102,6 +104,7 @@ public class ForceApp implements IForceApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -117,6 +120,7 @@ public class ForceApp implements IForceApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
@@ -131,46 +135,44 @@ public class ForceApp implements IForceApp {
 
 		} catch (Exception e) {
 			System.out.println("Invalid input");
+			scanner.nextLine();
 		}
 	}
 
 	private double getMass() {
-		System.out.println("Enter mass (kg) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter mass (kg) : ");
 	}
 
 	private double getWaterMass() {
-		System.out.println("Enter mass of water displaced (kg) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter mass of water displaced (kg) : ");
 	}
 
 	private double getAcceleration() {
-		System.out.println("Enter acceleration (ms-2) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter acceleration (ms-2) : ");
 	}
 	
 	private double getGravAcc() {
-		System.out.println("Enter acceleration due to gravity (ms-2) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter acceleration due to gravity (ms-2) : ");
 	}
 
 	private double getForce() {
-		System.out.println("Enter force (N) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter force (N) : ");
 	}
 
 	private double getWaterVolume() {
-		System.out.println("Enter volume of water displaced (m3) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter volume of water displaced (m3) : ");
 	}
 
 	private double getWaterDensity() {
-		System.out.println("Enter density of water displaced (kg m-3) : ");
-		return scanner.nextDouble();
+		return getDouble("Enter density of water displaced (kg m-3) : ");
 	}
 
 	private double getCoefficientOfFric() {
-		System.out.println("Enter coefficient of friction : ");
+		return getDouble("Enter coefficient of friction : ");
+	}
+
+	private double getDouble(String msg) {
+		System.out.print(msg);
 		return scanner.nextDouble();
 	}
 
