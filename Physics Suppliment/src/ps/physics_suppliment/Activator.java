@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import ps.electricityapp.IElectricityApp;
 import ps.eneryapp.IEnergyApp;
 import ps.forceapp.IForceApp;
 import ps.velocityapp.IApp;
@@ -15,6 +16,7 @@ public class Activator implements BundleActivator {
 	private IApp velocityApp;
 	private IForceApp forceApp;
 	private IEnergyApp energyApp;
+	private IElectricityApp electricityApp;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -26,6 +28,9 @@ public class Activator implements BundleActivator {
 
 		var energyAppRef = context.getServiceReference(IEnergyApp.class);
 		energyApp = context.getService(energyAppRef);
+		
+		var electricityAppRef = context.getServiceReference(IElectricityApp.class);
+		electricityApp = context.getService(electricityAppRef);
 
 		start();
 	}
@@ -70,6 +75,10 @@ public class Activator implements BundleActivator {
 				
 			case OPTION_ENERGY:
 				energyApp.start();
+				break;
+				
+			case OPTION_ELEC:
+				electricityApp.start();
 				break;
 
 			default:
