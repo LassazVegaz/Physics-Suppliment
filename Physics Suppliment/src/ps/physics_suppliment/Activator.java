@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import ps.eneryapp.IEnergyApp;
 import ps.forceapp.IForceApp;
 import ps.velocityapp.IApp;
 
@@ -13,15 +14,19 @@ public class Activator implements BundleActivator {
 
 	private IApp velocityApp;
 	private IForceApp forceApp;
+	private IEnergyApp energyApp;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		var veloServiceRef = context.getServiceReference(IApp.class);
-		velocityApp = context.getService(veloServiceRef);
-		
-		var forceServiceRef = context.getServiceReference(IForceApp.class);
-		forceApp = context.getService(forceServiceRef);
-		
+		var veloAppRef = context.getServiceReference(IApp.class);
+		velocityApp = context.getService(veloAppRef);
+
+		var forceAppRef = context.getServiceReference(IForceApp.class);
+		forceApp = context.getService(forceAppRef);
+
+		var energyAppRef = context.getServiceReference(IEnergyApp.class);
+		energyApp = context.getService(energyAppRef);
+
 		start();
 	}
 
@@ -33,7 +38,7 @@ public class Activator implements BundleActivator {
 	private void start() {
 		System.out.println("Welcome to Physics Supplement!");
 		System.out.println("Solve all your physics problems with US");
-		
+
 		var scanner = new Scanner(System.in);
 
 		while (true) {
@@ -58,9 +63,13 @@ public class Activator implements BundleActivator {
 			case OPTION_VELO:
 				velocityApp.start();
 				break;
-				
+
 			case OPTION_FORCE:
 				forceApp.start();
+				break;
+				
+			case OPTION_ENERGY:
+				energyApp.start();
 				break;
 
 			default:
